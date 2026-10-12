@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부산 비즈니스 심포지엄 초대장</title>
+<meta property="og:title" content="부산 비즈니스 심포지엄에 초대합니다">
+<meta property="og:description" content="부산 기업가들의 이야기와 네트워킹, 사업 연결의 자리. 지금 참가 신청하세요.">
+<!-- 카톡 미리보기 이미지: 이미지를 같은 폴더에 올리고 아래 주석을 풀어 주소를 넣으세요 -->
+<!-- <meta property="og:image" content="https://내주소/og.jpg"> -->
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1c2330; --sub:#667085; --line:#d9dde4; --main:#c8102e; --dark:#1c2330; }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; line-height:1.6; }
+  .wrap { max-width:480px; margin:0 auto; padding:0 16px 96px; }
+
+  .hero { background:var(--dark); color:#fff; margin:0 -16px; padding:48px 24px 40px; text-align:center; }
+  .hero .tag { display:inline-block; font-size:12px; letter-spacing:.1em; color:#ffb3bf; margin-bottom:12px; }
+  .hero h1 { font-size:28px; line-height:1.3; margin:0 0 20px; }
+  .hero .meta { font-size:15px; color:#e6e9ef; }
+  .hero .meta div { margin:4px 0; }
+
+  section { background:var(--card); border-radius:14px; padding:22px 18px; margin-top:16px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  h2 { font-size:18px; margin:0 0 12px; }
+  .purpose p { margin:0 0 10px; font-size:15px; }
+
+  .timeline { list-style:none; margin:0; padding:0; }
+  .timeline li { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--line); font-size:15px; }
+  .timeline li:last-child { border-bottom:0; }
+  .timeline .n { flex:none; width:24px; height:24px; border-radius:50%; background:var(--main); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:2px; }
+  .timeline .t { font-weight:600; }
+  .timeline .d { color:var(--sub); font-size:13px; }
+
+  label { display:block; font-weight:600; font-size:14px; margin:16px 0 6px; }
+  form label:first-of-type { margin-top:0; }
+  .req::after { content:" *"; color:var(--main); }
+  input[type=text], input[type=tel] { width:100%; font-size:16px; padding:12px; border:1px solid var(--line); border-radius:10px; background:#fff; }
+  input:focus { outline:2px solid var(--main); border-color:transparent; }
+  .hint { font-size:12px; color:var(--sub); margin-top:4px; }
+  .agree { display:flex; gap:10px; align-items:flex-start; margin-top:20px; font-size:13px; color:var(--sub); line-height:1.5; font-weight:400; }
+  .agree input { margin-top:3px; width:18px; height:18px; flex:none; }
+  button.submit { width:100%; margin-top:20px; padding:14px; font-size:16px; font-weight:700; color:#fff; background:var(--main); border:0; border-radius:10px; }
+  button:disabled { opacity:.5; }
+  .err { color:var(--main); font-size:13px; margin-top:10px; display:none; }
+  .done { display:none; text-align:center; padding:28px 0; }
+  .done h2 { margin-bottom:8px; }
+
+  .cta { position:fixed; left:0; right:0; bottom:0; padding:12px 16px calc(12px + env(safe-area-inset-bottom)); background:rgba(255,255,255,.95); border-top:1px solid var(--line); }
+  .cta a { display:block; max-width:448px; margin:0 auto; text-align:center; text-decoration:none; padding:14px; font-size:16px; font-weight:700; color:#fff; background:var(--main); border-radius:10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="tag">INVITATION</div>
+    <h1 id="title"></h1>
+    <div class="meta">
+      <div id="date"></div>
+      <div id="place"></div>
+    </div>
+  </div>
+
+  <section class="purpose">
+    <h2>이 자리를 여는 이유</h2>
+    <div id="purpose"></div>
+  </section>
+
+  <section>
+    <h2>프로그램</h2>
+    <ol class="timeline" id="program"></ol>
+  </section>
+
+  <section id="apply">
+    <h2>참가 신청</h2>
+    <form id="f" autocomplete="on">
+      <label class="req" for="name">이름</label>
+      <input type="text" id="name" name="name" required autocomplete="name">
+
+      <label class="req" for="phone">연락처</label>
+      <input type="tel" id="phone" name="phone" required inputmode="tel" placeholder="010-0000-0000" autocomplete="tel">
+
+      <label class="req" for="company">회사명</label>
+      <input type="text" id="company" name="company" required autocomplete="organization">
+
+      <label class="req" for="industry">업종</label>
+      <input type="text" id="industry" name="industry" required placeholder="예) 인테리어, 세무, 음식점">
+
+      <label class="req" for="years">업력</label>
+      <input type="text" id="years" name="years" required placeholder="예) 5년">
+
+      <label class="req" for="inviter">초대해주신 분</label>
+      <input type="text" id="inviter" name="inviter" required placeholder="성함">
+
+      <label for="wanted">소개받고 싶은 업종</label>
+      <input type="text" id="wanted" name="wanted" placeholder="예) 세무사, 마케팅 대행">
+      <div class="hint">사업에 도움이 될 분을 연결해드리는 데 사용합니다.</div>
+
+      <label class="agree">
+        <input type="checkbox" id="agree" required>
+        <span>행사 안내 및 후속 연락(문자·전화)을 위해 개인정보(이름, 연락처, 회사 정보) 수집·이용에 동의합니다.</span>
+      </label>
+
+      <button type="submit" class="submit" id="btn">신청하기</button>
+      <div class="err" id="err">전송에 실패했습니다. 잠시 후 다시 시도해주세요.</div>
+    </form>
+
+    <div class="done" id="done">
+      <h2>신청이 완료되었습니다</h2>
+      <p>감사합니다. 행사 전에 안내 연락을 드리겠습니다.</p>
+    </div>
+  </section>
+</div>
+
+<div class="cta" id="cta"><a href="#apply">참가 신청하기</a></div>
+
+<script>
+// ===== 설정: 여기만 고치면 됩니다 =====
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyI5ZPv1Aw5qoAw0GCFSQcrZvG2N-qEHoE954V-Jl-Yqrh3o0X0Rg84zY3WbMZklaf_CA/exec";
+const CHAPTERS = { pioneer:"파이오니어", giants:"자이언츠", ocean:"오션" };
+
+const EVENT = {
+  title: "부산 비즈니스 심포지엄",
+  date:  "일시: (날짜·시간 확정 후 입력)",
+  place: "장소: (장소 확정 후 입력)",
+  // 취지: 초안입니다. 실제 취지에 맞게 문장을 고쳐주세요.
+  purpose: [
+    "부산에서 사업을 키워온 분들의 이야기를 듣고, 서로의 사업을 연결하는 자리입니다.",
+    "혼자 애쓰던 사업이 좋은 사람을 만나 더 빨리 자라는 방법, BNI에서 그 사례를 직접 들어보실 수 있습니다."
+  ],
+  program: [
+    { t:"부산 기업가 특별 강연", d:"부산에서 성공한 기업가의 이야기" },
+    { t:"커피 세션", d:"30분 오픈 네트워킹" },
+    { t:"사업 연결 사례 발표", d:"BNI로 사업을 키운 3인, 각 10분" },
+    { t:"BNI 소개", d:"BNI는 어떤 곳인가" }
+  ]
+};
+// ====================================
+
+const $ = (id) => document.getElementById(id);
+$("title").textContent = EVENT.title;
+$("date").textContent  = EVENT.date;
+$("place").textContent = EVENT.place;
+$("purpose").innerHTML = EVENT.purpose.map(p => "<p></p>").join("");
+[...$("purpose").children].forEach((el, i) => el.textContent = EVENT.purpose[i]);
+EVENT.program.forEach((p, i) => {
+  const li = document.createElement("li");
+  li.innerHTML = '<span class="n"></span><div><div class="t"></div><div class="d"></div></div>';
+  li.querySelector(".n").textContent = i + 1;
+  li.querySelector(".t").textContent = p.t;
+  li.querySelector(".d").textContent = p.d;
+  $("program").appendChild(li);
+});
+
+const code = new URLSearchParams(location.search).get("c") || "";
+const chapter = CHAPTERS[code] || code || "미지정";
+
+const f = $("f");
+f.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const btn = $("btn");
+  btn.disabled = true; btn.textContent = "전송 중...";
+  $("err").style.display = "none";
+
+  const data = new URLSearchParams(new FormData(f));
+  data.append("chapter", chapter);
+  data.append("agree", "동의");
+
+  try {
+    await fetch(SCRIPT_URL, { method:"POST", mode:"no-cors", body:data });
+    f.style.display = "none";
+    $("done").style.display = "block";
+    $("cta").style.display = "none";
+  } catch (err) {
+    $("err").style.display = "block";
+    btn.disabled = false; btn.textContent = "신청하기";
+  }
+});
+</script>
+</body>
+</html>
