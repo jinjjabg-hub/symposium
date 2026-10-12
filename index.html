@@ -120,7 +120,7 @@
 
 <script>
 // ===== 설정: 여기만 고치면 됩니다 =====
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfpS4GEMUp890A6ulXk1FWXambsuIthOcXBF_rajCk3zPZDFL3nufB0QHNl_6u2XUZ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzORNKur72TZA9o1aB0KIasdctqDzERniL_s93YoNBoy85xwr7wKESrHoegmxR8Mk38/exec";
 const CHAPTERS = { pioneer:"파이오니어", giants:"자이언츠", ocean:"오션" };
 
 const EVENT = {
@@ -171,11 +171,14 @@ f.addEventListener("submit", async (e) => {
   data.append("agree", "동의");
 
   try {
-    await fetch(SCRIPT_URL, { method:"POST", mode:"no-cors", body:data });
+    const res = await fetch(SCRIPT_URL, { method:"POST", body:data });
+    const txt = await res.text();
+    if (!res.ok || txt.trim() !== "ok") throw new Error("응답 오류: " + res.status + " " + txt.slice(0,80));
     f.style.display = "none";
     $("done").style.display = "block";
     $("cta").style.display = "none";
   } catch (err) {
+    console.error(err);
     $("err").style.display = "block";
     btn.disabled = false; btn.textContent = "신청하기";
   }
